@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import { SiteSummary } from '@/app/(main)/boards/SiteSummary';
+import { SitesTable } from '@/app/(main)/boards/SitesTable';
 import { TextBlock } from '@/app/(main)/boards/TextBlock';
 import { BoardFunnel } from '@/app/(main)/websites/[websiteId]/(reports)/funnels/BoardFunnel';
 import { LinkMetricsBar } from '@/app/(main)/links/[linkId]/LinkMetricsBar';
@@ -93,16 +94,7 @@ const METRIC_TYPES = [
 ];
 
 const PIXEL_LINK_METRIC_TYPES = METRIC_TYPES.filter(({ value }) =>
-  [
-    'referrer',
-    'channel',
-    'browser',
-    'os',
-    'device',
-    'country',
-    'region',
-    'city',
-  ].includes(value),
+  ['referrer', 'channel', 'browser', 'os', 'device', 'country', 'region', 'city'].includes(value),
 );
 
 const LIMIT_OPTIONS = [
@@ -139,6 +131,17 @@ const LinkMetricsBarAdapter = ({ websiteId }: { websiteId?: string }) =>
 
 const componentDefinitions: ComponentDefinition[] = [
   // Overview
+  {
+    type: 'SitesTable',
+    name: 'Sites table',
+    description: 'Several sites in one table: visitors, visits, curve, top pages and referrers',
+    category: 'overview',
+    group: 'Traffic',
+    icon: PanelTop,
+    component: SitesTable,
+    requiresWebsite: false,
+    defaultProps: { sites: [] },
+  },
   {
     type: 'SiteSummary',
     name: 'Site summary',
