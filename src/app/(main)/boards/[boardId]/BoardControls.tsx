@@ -12,8 +12,13 @@ export function BoardControls() {
   const entityType = boardEntity.entityType || fallbackEntity.entityType;
   const entityId = boardEntity.entityId || fallbackEntity.entityId;
 
+  // byelior: boards without a single entity (e.g. SitesTable) still get the date range picker
   if (!entityId) {
-    return null;
+    return (
+      <Box marginBottom="4">
+        <WebsiteControls allowFilter={false} />
+      </Box>
+    );
   }
 
   return (

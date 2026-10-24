@@ -51,7 +51,13 @@ function Figure({ label, value = 0 }: { label: string; value?: number }) {
   );
 }
 
-function Sparkline({ points }: { points?: { x: string; y: number }[] }) {
+export function Sparkline({
+  points,
+  height = 44,
+}: {
+  points?: { x: string; y: number }[];
+  height?: number;
+}) {
   if (!points?.length) {
     return null;
   }
@@ -67,7 +73,7 @@ function Sparkline({ points }: { points?: { x: string; y: number }[] }) {
     <svg
       viewBox="0 0 100 40"
       preserveAspectRatio="none"
-      style={{ flex: 1, minWidth: 60, height: 44 }}
+      style={{ flex: 1, minWidth: 60, width: '100%', height }}
       aria-hidden="true"
     >
       <polygon points={`0,40 ${coords.join(' ')} 100,40`} fill={color} fillOpacity={0.12} />
