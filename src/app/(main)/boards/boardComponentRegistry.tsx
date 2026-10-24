@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { SiteSummary } from '@/app/(main)/boards/SiteSummary';
 import { TextBlock } from '@/app/(main)/boards/TextBlock';
 import { BoardFunnel } from '@/app/(main)/websites/[websiteId]/(reports)/funnels/BoardFunnel';
 import { LinkMetricsBar } from '@/app/(main)/links/[linkId]/LinkMetricsBar';
@@ -138,6 +139,15 @@ const LinkMetricsBarAdapter = ({ websiteId }: { websiteId?: string }) =>
 
 const componentDefinitions: ComponentDefinition[] = [
   // Overview
+  {
+    type: 'SiteSummary',
+    name: 'Site summary',
+    description: 'Visitors, visits, visitor curve, top pages and referrers',
+    category: 'overview',
+    group: 'Traffic',
+    icon: PanelTop,
+    component: SiteSummary,
+  },
   {
     type: 'WebsiteMetricsBar',
     name: 'Metrics bar',

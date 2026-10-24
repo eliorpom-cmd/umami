@@ -11,6 +11,7 @@ export const BOARD_COMPONENT_COMPATIBILITY_MATRIX = {
   RevenueMetricsBar: ['website'],
   RevenueChart: ['website'],
   RevenueMetricsTable: ['website'],
+  SiteSummary: ['website'],
   UTM: ['website'],
   WeeklyTraffic: ['website'],
 } as const satisfies Partial<Record<string, readonly BoardEntityType[]>>;
